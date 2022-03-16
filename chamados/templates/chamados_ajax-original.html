@@ -2,7 +2,8 @@
 {% load static  %}
 {% load tags %}
 {% block content %}
-    <!-- Header -->
+
+   <!-- Header -->
     <header class="ex-header bg-gray">
         <div class="container">
             <div class="row">
@@ -32,8 +33,8 @@
     {% for chamado in chamados %}        
             <tr>
                 <td>{{ chamado.data|date:'d/m' }}</td>
-                <td><a href="{{ chamado.id }}"> #{{ chamado.numero_chamado }} </a></td>
-                <td><a href="{{ chamado.id }}"> {{ chamado.titulo }} </a></td>
+                <td><a id="{{chamado.id}}" class="btn"> #{{ chamado.numero_chamado }} </a></td>
+                <td><a id="{{chamado.id}}" class="btn"> {{ chamado.titulo }} </a></td>
                
                 <td>{{ chamado.fila }}</td>
                 <td>{{ chamado.prioridade }}</td>
@@ -92,9 +93,12 @@
             </tr>
         </tfoot>
     </table>
+    <div id="detalhe" class="row">
+         
     
+    </div>
 
-   
+    
 
 
 
