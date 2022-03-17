@@ -44,6 +44,18 @@ def chamados_ajax(request):
     }
     return render(request,'chamados_ajax.html', dados)
 
+    def chamados_ajax2(request):
+        chamados = Chamado.objects.all().order_by('-data')
+        tamanho = len(chamados)
+        paginador = Paginator(chamados,10)
+        pagina = request.GET.get('pagina')
+        chamados_por_pagina = paginador.get_page(pagina)
+        dados = {
+            'total':tamanho,
+            'chamados': chamados_por_pagina
+        }
+        return render(request,'chamados_ajax2.html', dados)
+
 def detalhe_chamado_ajax(request,id):
     detalhe_chamado = Chamado.objects.get(id=id)
     conteudo = {'detalhe_chamado':detalhe_chamado}
