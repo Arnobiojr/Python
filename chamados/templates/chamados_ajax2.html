@@ -33,8 +33,16 @@
     {% for chamado in chamados %}        
             <tr>
                 <td>{{ chamado.data|date:'d/m' }}</td>
-                <td><a id="{{chamado.id}}" class="btn"> #{{ chamado.numero_chamado }} </a></td>
-                <td><a id="{{chamado.id}}" class="btn"> {{ chamado.titulo }} </a></td>
+                <td>
+                    <a id="{{chamado.id}}" class="btn" data-toggle="modal" data-target=".bd-example-modal-xl">
+                     #{{ chamado.numero_chamado }} 
+                    </a>
+                </td>
+                <td>
+                    <a id="{{chamado.id}}" class="btn" data-toggle="modal" data-target=".bd-example-modal-xl">
+                     {{ chamado.titulo }} 
+                    </a>
+                </td>
                
                 <td>{{ chamado.fila }}</td>
                 <td>{{ chamado.prioridade }}</td>
@@ -93,10 +101,16 @@
             </tr>
         </tfoot>
     </table>
-    <div id="detalhe" class="row">
-         
-    
+   
+  
+  <!-- Modal -->
+  <div class="modal fade bd-example-modal-xl" tabindex="-1" role="dialog" aria-labelledby="myExtraLargeModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-xl">
+      <div class="modal-content">
+        {{ detalhe_chamado.descricao|truncatewords:20 }}
+      </div>
     </div>
+  </div>
 
     
 

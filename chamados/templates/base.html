@@ -200,21 +200,13 @@ $(function () {
         var id = $(this).attr('id');
         $.get('/detalhe_chamado_ajax/' + id, function(resposta){
             // Na variável resposta estará o retorno da sua view
-            $('#detalhe').html(resposta);
+            $('.modal-content').html(resposta);
         });
       });
+      
   
     });
   </script>
-  <script>
-    $(document).on("click", ".open-incident", function (e) {
-      e.preventDefault();
-      var $popup = $("#popup");
-      var popup_url = $(this).data("popup-url");
-      $(".modal-body", $popup).load(popup_url, function () {
-        $popup.modal("show");
-      });
-    });
-  </script>
+  
 </body>
 </html>

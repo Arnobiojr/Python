@@ -10,6 +10,7 @@ urlpatterns = [
     path('terms', views.terms,  name='terms'),
     path('privacy', views.privacy,  name='privacy'),
     path('chamados', views.chamados,  name='chamados'),
-    path('chamados_ajax', views.chamados_ajax,  name='chamados_ajax')
+    path('chamados_ajax', views.chamados_ajax,  name='chamados_ajax'),
+    path('chamados_ajax2', views.chamados_ajax2,  name='chamados_ajax2')
     
 ]
