@@ -23,20 +23,20 @@
                     
                 </td>
                
-                <td>{{ detalhe_chamado.descricao|truncatewords:20 }}</td>
+                <td>{{ detalhe_chamado.descricao }}</td>
                 <td>{{ detalhe_chamado.categoria }}</td>
                 <td>{{ detalhe_chamado.fila }}</td>                
                 <td>{{ detalhe_chamado.prioridade }}</td>
                 <td>
                     {% if detalhe_chamado.figura_chamado == '' %}
                     <a href="#" data-toggle="tooltip" data-placement="bottom" data-html="true" title="{{ detalhe_chamado.usuario }} </br> 
-                        <img src='midia/figuras/usuario.png' height='auto' max-width:400px class='img-thumbnail'>" >
-                        {{ detalhe_chamado.usuario}}
+                        <img src='midia/figuras/{{foto_usuario}}.png' height='auto' max-width:400px class='img-thumbnail'>" >
+                        {{ detalhe_chamado.usuario }}
                         </a>
                     {% else %}
                     <a href="#" data-toggle="tooltip" data-placement="bottom" data-html="true" 
                     title="{{ detalhe_chamado.usuario }} </br> <img src='{{ detalhe_chamado.figura_chamado.url }}' height='auto' max-width:400px class='img-thumbnail'>" >
-                        {{ detalhe_chamado.usuario}}
+                        {{ detalhe_chamado.usuario }}
                         </a>
                         
                     {% endif %}
@@ -51,3 +51,8 @@
         </tbody>
         
     </table>
+    <script>
+        $(function () {
+            $('[data-toggle="tooltip"]').tooltip()
+          })
+        </script>

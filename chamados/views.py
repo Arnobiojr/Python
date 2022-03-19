@@ -1,6 +1,10 @@
+import json
+from random import random
+from django.http import HttpResponse
 from django.shortcuts import get_object_or_404, render, get_list_or_404
 from .models import Chamado, Usuario 
 from django.core.paginator import Paginator,PageNotAnInteger,EmptyPage
+import random
 # Create your views here.
 def index(request):
     
@@ -15,7 +19,7 @@ def terms(request):
 def privacy(request):
     return render(request,'privacy.html')
 
-def chamados(request):
+'''def chamados(request):
     chamados = Chamado.objects.all().order_by('-data')
     tamanho = len(chamados)
     paginador = Paginator(chamados,10)
@@ -43,7 +47,7 @@ def chamados_ajax(request):
         'chamados': chamados_por_pagina
     }
     return render(request,'chamados_ajax.html', dados)
-    
+'''    
 def chamados_ajax2(request):
     chamados = Chamado.objects.all().order_by('-data')
     tamanho = len(chamados)
@@ -58,8 +62,10 @@ def chamados_ajax2(request):
 
 def detalhe_chamado_ajax(request,id):
     detalhe_chamado = Chamado.objects.get(id=id)
+    foto_usuario = str(random.randint(1,15))
+    
     conteudo = {'detalhe_chamado':detalhe_chamado}
-    return render(request,'detalhe_chamado_ajax.html',conteudo)
+    return render(request,'detalhe_chamado_ajax.html',conteudo,foto_usuario)
 
 
 

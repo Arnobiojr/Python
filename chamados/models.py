@@ -31,16 +31,16 @@ class Prioridade(models.Model):
         return self.prioridade
 
 class Chamado(models.Model):
-    estado = models.ForeignKey(Estado,on_delete=models.CASCADE)
-    categoria = models.ForeignKey(Categoria,on_delete=models.CASCADE)
-    fila = models.ForeignKey(Fila,on_delete=models.CASCADE)
-    usuario = models.ForeignKey(Usuario,on_delete=models.CASCADE)
+    estado = models.ForeignKey(Estado,on_delete=models.DO_NOTHING)
+    categoria = models.ForeignKey(Categoria,on_delete=models.DO_NOTHING)
+    fila = models.ForeignKey(Fila,on_delete=models.DO_NOTHING)
+    usuario = models.ForeignKey(Usuario,on_delete=models.DO_NOTHING)
     numero_chamado = models.IntegerField()
     titulo = models.CharField(max_length=200)
     descricao = models.TextField()
     patrimonio = models.CharField(max_length=10, blank=True)
     ip = models.CharField(max_length=15, blank=True)
-    prioridade = models.ForeignKey(Prioridade,on_delete=models.CASCADE)
+    prioridade = models.ForeignKey(Prioridade,on_delete=models.DO_NOTHING)
     data = models.DateTimeField(default=datetime.now)
     figura_chamado = models.ImageField(upload_to='figuras/%Y-%m-%d',blank=True)
     def __str__(self):
