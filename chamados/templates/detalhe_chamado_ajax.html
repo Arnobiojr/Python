@@ -7,7 +7,7 @@
         <thead>
             <tr>
                 <th>DATA</th>
-                <th>DESCRIÇÃO</th>
+                
                 <th>CATEGORIA</th>
                 <th>FILA</th>
                 <th>PRIORIDADE</th>
@@ -23,7 +23,7 @@
                     
                 </td>
                
-                <td>{{ detalhe_chamado.descricao }}</td>
+                
                 <td>{{ detalhe_chamado.categoria }}</td>
                 <td>{{ detalhe_chamado.fila }}</td>                
                 <td>{{ detalhe_chamado.prioridade }}</td>
@@ -46,6 +46,8 @@
                 <td>{{ detalhe_chamado.patrimonio }}</td>
                 <td>{{ detalhe_chamado.ip }}</td>
             </tr>
+            <tr><th>DESCRIÇÃO</th></tr>
+            <tr></tr><td colspan="7">{{ detalhe_chamado.descricao }}</td></tr>
             
             
         </tbody>
