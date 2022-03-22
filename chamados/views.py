@@ -64,8 +64,12 @@ def detalhe_chamado_ajax(request,id):
     detalhe_chamado = Chamado.objects.get(id=id)
     foto_usuario = str(random.randint(1,15))
     
-    conteudo = {'detalhe_chamado':detalhe_chamado}
-    return render(request,'detalhe_chamado_ajax.html',conteudo,foto_usuario)
+    conteudo = {
+        'detalhe_chamado':detalhe_chamado,
+        'foto':foto_usuario
+    }
+    print(conteudo)
+    return render(request,'detalhe_chamado_ajax.html',conteudo)
 
 
 
