@@ -1,0 +1,120 @@
+{% extends 'base.html' %}
+{% load static  %}
+{% load tags %}
+{% block content %}
+
+   <!-- Header -->
+    <header class="ex-header bg-gray">
+        <div class="container">
+            <div class="row">
+                <div class="col-xl-10 offset-xl-1">
+                    <h1>Chamados registrados</h1>
+                </div> <!-- end of col -->
+            </div> <!-- end of row -->
+        </div> <!-- end of container -->
+    </header> <!-- end of ex-header -->
+    <!-- end of header -->
+    {% if chamados %}
+    
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th>DATA</th>
+                <th>#CHAMADO</th>
+                <th>TÍTULO</th>
+               
+                
+                <th>FILA</th>
+                <th>PRIORIDADE</th>
+               
+            </tr>
+        </thead>
+        <tbody>
+    {% for chamado in chamados %}        
+    <tr data-toggle="collapse" data-target="#{{chamado.id}}" id="tabelacol">
+        <td>{{ chamado.data|date:'d/m' }}</td>
+                <td>#{{ chamado.numero_chamado }}</td>
+                <td>{{chamado.titulo }}</td>
+                <td>{{ chamado.fila }}</td>
+                <td>{{ chamado.prioridade }}</td>
+               
+    </tr>
+    <tr>
+        <td colspan="6" class="hiddenRow" style="padding: 0;">
+            <div id="{{chamado.id}}" class="collapse">Demo3</div>
+        </td>
+    </tr>
+    {% endfor %}
+    {% else %}
+    {% endif %}
+            
+        </tbody>
+        <tfoot>
+            <tr>
+
+                <td class="text-monospace text-center text-uppercase" colspan="6">Total de 
+                    <span class="font-weight-bold"> {{total}} </span> chamados abertos. 
+                    
+                    {% if chamados.has_other_pages %}
+                    <ul class="pagination">
+                        {% if chamados.has_previous %}
+                        <li class="page-item">
+                            <a href="?pagina={{ chamados.previous_page_number }}" class="page-link">&laquo;</a>
+                        </li>
+                        {% else %}
+                        <li class="page-item disabled">
+                            <a class="page-link">&laquo;</a>
+                        </li>
+                        {% endif %}
+                        {% for pagina in chamados.paginator.page_range %}
+                        {% if chamados.number == pagina %}
+                        <li class="page-item active">
+                            <a class="page-link">{{ pagina }}</a>
+                        </li>
+                        {% else %}
+                        {% if forloop.counter < 5 %}
+        
+    
+                        <li class="page-item">
+                            <a href="?pagina={{forloop.counter}}" class="page-link">{{forloop.counter}}</a>
+                        </li>
+                        {% endif %}
+                        {% endif %}
+                        {% endfor %}
+                        {% if chamados.has_next %}
+                        <li class="page-item">
+                            <a href="?pagina={{ chamados.next_page_number }}" class="page-link">&raquo;</a>
+                        </li>
+                        {% else %}
+                        <li class="page-item disabled">
+                            <a class="page-link">&raquo;</a>
+                        </li>
+                        {% endif %}
+                    </ul>
+                    {% endif %}
+                </td>
+                
+            </tr>
+        </tfoot>
+    </table>
+   
+  
+  <!-- Modal -->
+  <div class="modal fade bd-example-modal-xl" tabindex="-1" role="dialog" aria-labelledby="myExtraLargeModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-xl">
+      <div class="modal-content">
+        {{ detalhe_chamado.descricao|truncatewords:20 }}
+      </div>
+    </div>
+  </div>
+
+    
+
+  <script>
+    $('.collapse').on('show.bs.collapse', function () {
+            
+        $('.collapse.in').collapse('hide');
+    });
+</script>
+  
+{% endblock %}

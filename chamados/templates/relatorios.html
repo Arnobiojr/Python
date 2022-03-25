@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+{% load static  %}
+{% block head %}
+<link href="{% static 'css/jqx.base.css'%}" rel="stylesheet">
+<script src="{% static 'js/jqwidgets/jqxcore.js'%}"></script>
+<script src="{% static 'js/jqwidgets/jqxdraw.js'%}"></script>
+<script src="{% static 'js/jqwidgets/jqxbargauge.js'%}"></script>
+{% endblock %}
+{% block content %}
+    <!-- Header -->
+    <header class="ex-header bg-gray">
+        <div class="container">
+            <div class="row">
+                <div class="col-xl-10 offset-xl-1">
+                    <h1>Relatórios dos chamados</h1>
+                </div> <!-- end of col -->
+            </div> <!-- end of row -->
+        </div> <!-- end of container -->
+    </header> <!-- end of ex-header -->
+    <!-- end of header -->
+
+
+    <!-- Basic -->
+    <div class="ex-basic-1 pt-5 pb-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-xl-10 offset-xl-1">
+                    <!-- end of text-box -->
+                    <div id="barGauge">
+
+                    </div>
+                    
+                </div> <!-- end of col -->
+            </div> <!-- end of row -->
+        </div> <!-- end of container -->
+    </div> <!-- end of ex-basic-1 -->
+    <!-- end of basic -->
+    <script type="text/javascript">
+        $(document).ready(function ()
+        {
+            $('#barGauge').jqxBarGauge({
+                colorScheme: "scheme02", width: 600, height: 600,
+                values: [{{ abertos }}, {{ fechados }}, {{ aguardando }}, {{ concluidos }}], max: {{ total }}, tooltip: {
+                    visible: true, formatFunction: function (value)
+                    {
+                        var realVal = parseInt(value);
+                        return ('Year: 2016<br/>Price Index:' + realVal);
+                    },
+                }
+            });
+        });
+    </script>
+  
+{% endblock %}

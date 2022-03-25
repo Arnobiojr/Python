@@ -1,0 +1,46 @@
+
+       <h3>Detalhes do chamado #{{ detalhe_chamado.numero_chamado }}:</h3> <h4>{{ detalhe_chamado.titulo }}</h4>
+        <h5> (aberto há {{ detalhe_chamado.data|timesince }})</h5>
+       <tbody class="text-monospace">
+        
+            <tr>
+                <td>{{ detalhe_chamado.data|date:'d/m' }}
+                    
+                </td>
+               
+                
+                <td>{{ detalhe_chamado.categoria }}</td>
+                <td>{{ detalhe_chamado.fila }}</td>                
+                <td>{{ detalhe_chamado.prioridade }}</td>
+                <td>
+                    {% if detalhe_chamado.figura_chamado == '' %}
+                    <a href="#" data-toggle="tooltip" data-placement="bottom" data-html="true" title="{{ detalhe_chamado.usuario }} </br> 
+                        <img src='midia/figuras/{{foto}}.png' height='auto' max-width:400px class='img-thumbnail'>" >
+                        {{ detalhe_chamado.usuario }}
+                        </a>
+                    {% else %}
+                    <a href="#" data-toggle="tooltip" data-placement="bottom" data-html="true" 
+                    title="{{ detalhe_chamado.usuario }} </br> <img src='{{ detalhe_chamado.figura_chamado.url }}' height='auto' max-width:400px class='img-thumbnail'>" >
+                        {{ detalhe_chamado.usuario }}
+                        </a>
+                        
+                    {% endif %}
+                    
+                    </a>
+                </td>
+                <td>{{ detalhe_chamado.patrimonio }}</td>
+                <td>{{ detalhe_chamado.ip }}</td>
+            </tr>
+            <tr><th>DESCRIÇÃO</th></tr>
+            <tr></tr><td colspan="7">{{ detalhe_chamado.descricao }}</td></tr>
+            
+            
+        </tbody>
+        
+  
+    <script>
+        $(function () {
+            $('[data-toggle="tooltip"]').tooltip()
+          })
+    </script>
+   

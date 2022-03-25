@@ -11,6 +11,9 @@ urlpatterns = [
     path('privacy', views.privacy,  name='privacy'),
     #path('chamados', views.chamados,  name='chamados'),
     #path('chamados_ajax', views.chamados_ajax,  name='chamados_ajax'),
-    path('chamados_ajax2', views.chamados_ajax2,  name='chamados_ajax2')
+    path('chamados_ajax2', views.chamados_ajax2,  name='chamados_ajax2'),
+    path('detalhe_chamado_col/<int:id>', views.detalhe_chamado_col,name='detalhe_chamado_col'),
+    path('chamados_ajax_col', views.chamados_ajax_col,  name='chamados_ajax_col'),
+    path('relatorios', views.relatorios,  name='relatorios')
     
 ]
