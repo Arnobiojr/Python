@@ -1,4 +1,3 @@
-import json
 from random import random
 from django.http import HttpResponse
 from django.shortcuts import get_object_or_404, render, get_list_or_404
